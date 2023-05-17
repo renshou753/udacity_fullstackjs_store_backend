@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  postgres:
+    build:
+      context: ./db/init
+      dockerfile: Dockerfile
+    ports:
+      - '5432:5432'
+    container_name: uda-db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: db
+
+  adminer:
+    image: adminer
+    ports:
+      - 8085:8080
+
+volumes:
+  postgres:
