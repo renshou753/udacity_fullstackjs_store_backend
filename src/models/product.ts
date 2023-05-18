@@ -12,7 +12,7 @@ export class ProductStore {
     try {
       // @ts-ignore
       const conn = await Client.connect();
-      const sql = "SELECT * FROM product";
+      const sql = "SELECT name, price, category_id FROM product";
 
       const result = await conn.query(sql);
 
@@ -20,13 +20,13 @@ export class ProductStore {
 
       return result.rows;
     } catch (err) {
-      throw new Error(`Could not get productss. Error: ${err}`);
+      throw new Error(`Could not get products. Error: ${err}`);
     }
   }
 
   async show(id: string): Promise<Product> {
     try {
-      const sql = "SELECT * FROM product WHERE id=($1)";
+      const sql = "SELECT name, price, category_id FROM product WHERE id=($1)";
       // @ts-ignore
       const conn = await Client.connect();
 
@@ -43,7 +43,7 @@ export class ProductStore {
   async create(b: Product): Promise<Product> {
     try {
       const sql =
-        "INSERT INTO product (name, price, category_id) VALUES($1, $2, $3) RETURNING *";
+        "INSERT INTO product (name, price, category_id) VALUES($1, $2, $3) RETURNING name, price, category_id";
       // @ts-ignore
       const conn = await Client.connect();
 

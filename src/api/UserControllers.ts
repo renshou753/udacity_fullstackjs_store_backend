@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
 import { User, UserStore } from "../models/user";
 
 const store = new UserStore();
@@ -22,7 +23,12 @@ export const create = async (req: Request, res: Response) => {
     };
 
     const newUser = await store.create(user);
-    res.json(newUser);
+
+    const token = jwt.sign(
+      { user: newUser },
+      process.env.TOKEN_SECRET as string
+    );
+    res.json(token);
   } catch (err) {
     res.status(400);
     res.json(err);
@@ -32,7 +38,9 @@ export const create = async (req: Request, res: Response) => {
 export const authenticate = async (req: Request, res: Response) => {
   try {
     const user = await store.authenticate(req.body.id, req.body.password);
-    res.json(user);
+
+    const token = jwt.sign({ user: user }, process.env.TOKEN_SECRET as string);
+    res.json(token);
   } catch (err) {
     res.status(400);
     res.json(err);

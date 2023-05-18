@@ -19,11 +19,12 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Index [token required]: '/users' [GET]
 - Show [token required]: '/users/:id' [GET]
 - Create N[token required]: '/users' [POST]
+- Authenticate N[token required]: '/users/login' [POST]
 
 #### Orders
 
-- Current Order by user (args: user id)[token required]: '/users/:id/orders/current' [GET]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]: '/users/:id/orders/completed' [GET]
+- Current Order by user (args: user id)[token required]: '/orders/current/users/:id' [GET]
+- [OPTIONAL] Completed Orders by user (args: user id)[token required]: '/orders/completed/users/:id' [GET]
 
 ## Data Shapes
 
