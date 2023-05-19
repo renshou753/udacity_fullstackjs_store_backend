@@ -28,29 +28,34 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## Data Shapes
 
-#### Product
+#### product
 
 - id (integer)
 - name (varchar)
 - price (decimal)
 - category (integer) [foreign key to Category table]
 
-#### User
+#### user
 
 - id (integer)
 - first_name (varchar)
 - last_name (varchar)
 - password (varchar)
 
-#### Order
+#### order
 
 - id (integer)
-- product_id (integer) [foreign key to Products table]
-- quantity (integer)
 - user_id (integer) [foreign key to Users table]
 - status (varchar)
 
-#### Category
+#### orderProducts
+
+- id (primary key)
+- order_id (integer) [foreign key referencing the orders table]
+- product_id (integer) [foreign key referencing the products table]
+- quantity (integer)
+
+#### category
 
 - id (integer)
 - name (varchar)

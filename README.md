@@ -18,7 +18,8 @@ start dev: npm run start
 
 2. what ports the backend and database are running on
 
-3000
+backend server is running on port 3000
+database is running on port 5432
 
 3. package installation instructions
 

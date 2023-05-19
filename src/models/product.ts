@@ -85,7 +85,7 @@ export class ProductStore {
       // @ts-ignore
       const conn = await Client.connect();
       const sql = `
-      SELECT p.name, sum(o.quantity) as quantity_sum FROM "order" o
+      SELECT p.name, sum(o.quantity) as quantity_sum FROM "orderProduct" o
       left join product p
       on o.product_id = p.id
       group by p.name

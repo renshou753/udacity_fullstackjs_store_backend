@@ -10,7 +10,7 @@
     "watch": "tsc-watch --esModuleInterop src/index.ts --outDir ./dist --onSuccess \"node ./dist/index.js\"",
     "lint": "eslint src/ --ext .ts --fix",
     "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "test": "ENV=test && npm run build && db-migrate --env test up && ENV=test jasmine && db-migrate db:drop test",
+    "test": "ENV=test && npm run build && db-migrate --env test up && ENV=test jasmine && db-migrate db:drop db_test",
     "tsc": "tsc"
   },
   "author": "Udacity",
